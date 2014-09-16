@@ -2,29 +2,45 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Test {
-		static boolean repeat = true;
-		
-		public static void main (String[] args){
-			Scanner console = new Scanner(System.in);
-			System.out.println("Common greatest denominator of :");
-			do{
-				String[] str = console.nextLine().split("\\s+");
-				ArrayList<Integer> nums = arrangeArray(str);
-				System.out.println(nums.toString());
-				//cgf(nums);
+	static final int MIN = 1;
+	static final int MAX = 100;
+	//if true, program repeats until quit
+	//currently disabled due reduce error
+	static boolean repeat = true;
+	static boolean error = false;
+	
+	//main
+	public static void main(String[] args){
+		Scanner console = new Scanner(System.in);
+		//repeats until quit
+		do{
+			//requests for ints to find cgf
+			System.out.println("Common greatest factor of: ");
+			String str1 = console.nextLine();
+			String[] strList = toStringList(str1);
+			for(int a = 0; a<strList.length; a++){
+				if(isInteger(strList[a])){
+					if(Integer.parseInt(strList[a])<MIN || Integer.parseInt(strList[a])>MAX){
+						System.out.println("error: " + a + " input less than 0 or greater than 100");
+						error = true;
+					}
+				}
+				else{
+					System.out.println("error: " + a + " input not an int");
+					error = true;
+				}
+			}
+			//error testing
+			System.out.println("Error? " + error);
+			error = false;
+			
+			if(!error){
 				
 			}
-			while(repeat);
-			console.close();
 		}
-		
-		public static ArrayList<Integer> arrangeArray(String[] str){
-			ArrayList<Integer> nums = new ArrayList<Integer>();
-			for(int x=0; x<str.length; x++){
-				nums.add(Integer.parseInt(str[x]));
-			}
-			return nums;
-		}
+		while(repeat);
+		console.close();
+	}
 		
 		//factors a number and returns a int[] of the factors
 		public static int[] factor(int num){
@@ -59,6 +75,21 @@ public class Test {
 					}
 				}
 			}
+		}
+		
+		public static String[] toStringList(String str){
+			String[] list = str.split("\\s+");
+			return list;
+		}
+		
+		public static boolean isInteger( String input ) {
+		    try {
+		        Integer.parseInt( input );
+		        return true;
+		    }
+		    catch( Exception e ) {
+		        return false;
+		    }
 		}
 		
 		//prints int[] 

@@ -92,11 +92,6 @@ public class Assignment1 {
 		}
 	}
 	
-	public static String[] listToStr(String str){
-		String[] list = str.split("\\s+");
-		return list;
-	}
-	
 	public static String[] toStringList(String str){
 		String[] list = str.split("\\s+");
 		return list;
