@@ -1,7 +1,7 @@
 
 public class Testing {
 	public static void main(String[] args){
-		int beers = 20;
+		int beers = 10;
 		int bottles = beers;
 		int caps = beers;
 		while(bottles>=4 || caps >=2){
